@@ -1,0 +1,25 @@
+Package: gadget2to3
+Type: Package
+Title: Translate g2 model files into g3
+Version: 0.1.999
+Date: 2022-07-15
+Authors@R: c(person("Jamie", "Lentin", email="lentinj@shuttlethread.com",role = c("aut", "cre")),
+            person("Bjarki Thor", "Elvarsson", email="bjarki.elvarsson@hafogvatn.is",role = c("aut")),
+            person("Marine and Freshwater Research Institute (Iceland)", role = c("cph")))
+Maintainer: Jamie Lentin <lentinj@shuttlethread.com>
+Copyright: see file COPYRIGHTS
+Description: Tools to convert gadget2 model files into a gadget3 model.
+             See <https://gadget-framework.github.io/gadget2to3/>.
+Encoding: UTF-8
+Imports:
+    gadget3,
+    Rgadget,
+    rlang (>= 0.4.5),
+    utils
+Suggests:
+    knitr,
+    rmarkdown,
+    unittest (>= 1.4)
+VignetteBuilder: knitr
+License: GPL-2
+Biarch: yes

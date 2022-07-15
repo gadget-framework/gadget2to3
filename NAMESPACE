@@ -1,0 +1,4 @@
+importFrom("stats", "as.formula", "formula", "dnorm", "lag")
+importFrom("utils", "capture.output", "head", "str", "tail")
+
+exportPattern("^g2to3_")
