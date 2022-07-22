@@ -1,6 +1,6 @@
 g2to3_timefile <- function (path, file_name) {
     g2_time <- Rgadget::read.gadget.file(path, file_name, 'time', recursive = FALSE)
-    if (g2_time[[1]]$firststep != 1) stop("firststep must be 1 (initial part-years not supported)")
+    if (length(g2_time[[1]]$firststep) == 1 && g2_time[[1]]$firststep != 1) stop("firststep must be 1 (initial part-years not supported)")
     
     substitute(
         actions_time <- list(g3a_time(

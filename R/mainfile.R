@@ -11,7 +11,8 @@ g2to3_mainfile <- function (path, file_name = 'main') {
     out <- as.call(c(as.symbol("{"),  # }
         list(g2to3_timefile(path, g2_main[[1]]$timefile)),
 
-        lapply(g2_main$stock$stockfiles, function (f) g2to3_stockfile(path, f)),
+        lapply(g2_main$stock$stockfiles, function (f) g2to3_stockfile(path, f)[[2]]),
+        lapply(g2_main$stock$stockfiles, function (f) g2to3_stockfile(path, f)[[3]]),
 
         collapse(lapply(g2_main$fleet$fleetfiles, function (f) g2to3_fleetfile(path, f))),
 

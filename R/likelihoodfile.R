@@ -15,6 +15,11 @@ likelihood <- function (path, g2_likelihood, g2_likelihoods) {
         action = action))
 }
 
+likelihood_penalty <- function (path, g2_likelihood, g2_likelihoods) {
+    # Penalty isn't useful in gadget3
+    NULL
+}
+
 likelihood_understocking <- function (path, g2_likelihood, g2_likelihoods) {
     # Guess understocking stocks from all other likelihood components.
     stock_list <- unique(unlist(lapply(g2_likelihoods, function (l) l$stocknames)))
@@ -23,8 +28,8 @@ likelihood_understocking <- function (path, g2_likelihood, g2_likelihoods) {
     
     substitute(
         g3l_understocking(
-            weight = weight,
-            nll_breakdown = FALSE,
+            weight = as.double(weight),
+            nll_breakdown = TRUE,
             stock_list), list(
         weight = g2_likelihood$weight,
         stock_list = stock_list))
@@ -38,10 +43,13 @@ likelihood_catchdistribution <- function (path, g2_likelihood, ...) {
     } else {
         stop("Unknown distribution type", )
     }
-    if (g2_likelihood$overconsumption > 0) stop("Likelihood overconsumption=1 not supported")
-    if (g2_likelihood$aggregationlevel > 0) stop("Likelihood aggregationlevel=1 not supported")
+    if (length(g2_likelihood$overconsumption) == 1 && g2_likelihood$overconsumption > 0) stop("Likelihood overconsumption=1 not supported")
+    if (length(g2_likelihood$aggregationlevel) == 1 && g2_likelihood$aggregationlevel > 0) stop("Likelihood aggregationlevel=1 not supported")
     likelihood_common(path, g2_likelihood, 'g3l_catchdistribution', function_f)
 }
+
+# Difference with stockdistribution is in the data, which we handle automatically
+likelihood_stockdistribution <- likelihood_catchdistribution
 
 likelihood_surveyindices <- function (path, g2_likelihood, ...) {
     function_f <- call("g3l_distribution_surveyindices_log")  # TODO: linear or log
@@ -63,7 +71,8 @@ likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
     if (length(g2_likelihood$fleetnames) > 0) out['fleets'] <- list(to_list_call(g2_likelihood$fleetnames))
     out['stocks'] <- list(to_list_call(g2_likelihood$stocknames))
     out['function_f'] <- list(function_f)
-    out['nll_breakdown'] <- FALSE
+    out['report'] <- TRUE
+    out['nll_breakdown'] <- TRUE
     out['weight'] <- as.double(g2_likelihood$weight)
     return(out)
 }

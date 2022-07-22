@@ -1,14 +1,20 @@
 list.all.equal <- function (l) {
     for (i in seq_along(l)) {
         out <- if (i == 1) TRUE else all.equal(l[[1]], l[[i]])
-        if (!isTRUE(out)) return(out)
+        if (!isTRUE(out)) return(FALSE)
     }
     return(TRUE)
 }
 
 # Dynamically find something in our namespace
 get_g2tog3 <- function (...) {
-    get(paste0(...), envir = getNamespace("gadget2to3"))
+    fn_name <- paste0(...)
+    if (exists(fn_name,  envir = getNamespace("gadget2to3"))) {
+        get(fn_name, envir = getNamespace("gadget2to3"))
+    } else {
+        # Return code producing a non-functioning model
+        function(...) call("stop", paste0(fn_name, " is not supported"))
+    }
 }
 
 # Descend through call f, when a symbol like key appears, call it's function to modify the call
