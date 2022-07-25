@@ -8,10 +8,10 @@ g2to3_data <- function(path, file_name, file_type = 'data', component = 1, sub_c
 }
 
 # Read g2 data, convert to timeareadata
-g2to3_timeareadata <- function (path, file_name, area_group = NULL, value_field = "number") {
+g2to3_timeareadata <- function (path, file_name, areas = NULL, value_field = "number") {
     data <- Rgadget::read.gadget.file(path, file_name, 'data')[[1]]
     lookup_name <- gsub("\\W", ".", file_name, perl = TRUE)
-    gadget3::g3_timeareadata(lookup_name, data, value_field, area_group = area_group)
+    gadget3::g3_timeareadata(lookup_name, data, value_field, areas = areas)
 }
 
 # Read data + aggregates
