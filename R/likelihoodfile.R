@@ -71,6 +71,7 @@ likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
     if (length(g2_likelihood$fleetnames) > 0) out['fleets'] <- list(to_list_call(g2_likelihood$fleetnames))
     out['stocks'] <- list(to_list_call(g2_likelihood$stocknames))
     out['function_f'] <- list(function_f)
+    out['area_group'] <- quote( area_names )
     out['report'] <- TRUE
     out['nll_breakdown'] <- TRUE
     out['weight'] <- as.double(g2_likelihood$weight)

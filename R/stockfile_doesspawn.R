@@ -25,6 +25,7 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
     out[['beta_f']] <- g2to3_formula(spawnfile$stockparameters[[4]])
 
     run_f <- quote(TRUE)
+    run_subs <- list()
     run_f <- substitute(run_f && (x), list(
         x = Reduce(
                 function (a, b) substitute(a || cur_step == b, list(a = a, b = as.integer(b))),
@@ -32,16 +33,28 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
                 FALSE),
         run_f = run_f))
     run_f <- substitute(run_f && (x), list(
-        x = Reduce(  # TODO: Area lookup
-                function (a, b) substitute(a || area == b, list(a = a, b = as.integer(b))),
-                spawnfile$spawnareas,
-                FALSE),
+        x = Reduce(function (a, b) {
+            # We don't hae area_names available here, so turn run_f into a substitute
+            # call that will put the right value in the gap.
+            temp_var_name <- paste0('area_names_', b)
+            run_subs[[temp_var_name]] <<- substitute(area_names[b], list(b = as.character(b)))
+            substitute(a || area == temp_var_name, list(
+                temp_var_name = as.symbol(temp_var_name),
+                a = a))
+        }, spawnfile$spawnareas, FALSE),
         run_f = run_f))
     if ('firstspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && (cur_year >= x), list(
         x = as.integer(spawnfile$firstspawnyear)))
     if ('lastspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && (cur_year <= x), list(
         x = as.integer(spawnfile$lastspawnyear)))
-    out[['run_f']] <- call("quote", gadget3:::f_optimize(run_f))
+
+    if (length(run_subs) > 0) {
+        out[['run_f']] <- call("substitute",
+            gadget3:::f_optimize(run_f),
+            as.call(c( as.symbol("list"), run_subs )))
+    } else {
+        out[['run_f']] <- call("quote", gadget3:::f_optimize(run_f))
+    }
 
     return(out)
 }

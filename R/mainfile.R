@@ -10,6 +10,7 @@ g2to3_mainfile <- function (path, file_name = 'main') {
     g2_main <- Rgadget::read.gadget.file(path, file_name, 'main', recursive = FALSE)
     out <- as.call(c(as.symbol("{"),  # }
         list(g2to3_timefile(path, g2_main[[1]]$timefile)),
+        list(g2to3_areafile(path, g2_main[[1]]$areafile)),
 
         lapply(g2_main$stock$stockfiles, function (f) g2to3_stockfile(path, f)[[2]]),
         lapply(g2_main$stock$stockfiles, function (f) g2to3_stockfile(path, f)[[3]]),

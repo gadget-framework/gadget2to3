@@ -19,6 +19,7 @@ fleet <- function (path, g2_fleet) {
     }, c(list(
         comment_str = paste0("Create fleet definition for ", g2_fleet[[1]]),
         fleetname = g2_fleet[[1]],
+        livesonareas = substitute(area_names[x], list(x = as.character(g2_fleet[[1]]$livesonareas))),
         actions_fleet_var = as.symbol(paste0('actions_', fleet_var)),
         action = action,
         fleet_var = fleet_var), g2_fleet))
@@ -29,7 +30,7 @@ fleet_totalfleet <- function (path, fleet_var, g2_fleet) {
        g3a_predate_fleet(fleet_var, stock_vars,
            suitabilities = sutabilities,
            catchability_f = g3a_predate_catchability_totalfleet(
-               g2to3_timeareadata(path, data_file_name))), list(
+               g2to3_timeareadata(path, data_file_name, area_group = area_group))), list(
        fleet_var = fleet_var,
        stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
        sutabilities = sutabilities_fn_list(g2_fleet$suitability),

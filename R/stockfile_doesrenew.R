@@ -27,9 +27,8 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
     }
 
     if (list.all.equal(npf[,'area'])) {
-        # TODO: area lookup
-        run_f <- substitute(run_f && area == x, list(
-            x = as.integer(npf[1, 'area']),
+        run_f <- substitute(run_f && area == area_names[x], list(
+            x = as.character(npf[1, 'area']),
             run_f = run_f))
     } else {
         run_f <- call("stop", "Can't translate multi-area renewals")
