@@ -23,12 +23,16 @@ g2to3_stockfile <- function (path, file_name) {
     }
 
     actions_code <- lapply(seq_along(g2_stock), function (i) {
+        sect <- g2_stock[[i]]
+        sect_name <- names(g2_stock)[[i]]
         if (i == 1) {
             # First section doesn't have an action, but we should at least have ageing
             substitute(g3a_age(stock_var), list(stock_var = stock_var))
-        } else if (length(g2_stock[[i]]) > 1 && g2_stock[[i]][[1]] != 0) {
+        } else if (length(sect) == 1 && length(sect[[1]]) == 1 && sect[[1]][[1]] == 0) {
+            # Action is disabled, so nothing to do
+        } else {
             # Dispatch to a function corresponding to the component
-            get_g2tog3("stockfile_", names(g2_stock)[[i]])(path, stock_var, g2_stock[[i]], g2_stock)
+            get_g2tog3("stockfile_", sect_name)(path, stock_var, sect, g2_stock)
         }
     })
     actions_code <- Filter(Negate(is.null), actions_code)
