@@ -26,26 +26,26 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
 
     run_f <- quote(TRUE)
     run_subs <- list()
-    run_f <- substitute(run_f && (x), list(
+    run_f <- substitute(run_f && x, list(
         x = Reduce(
                 function (a, b) substitute(a || cur_step == b, list(a = a, b = as.integer(b))),
                 spawnfile$spawnsteps,
                 FALSE),
         run_f = run_f))
-    run_f <- substitute(run_f && (x), list(
+    run_f <- substitute(run_f && x, list(
         x = Reduce(function (a, b) {
             # We don't hae area_names available here, so turn run_f into a substitute
             # call that will put the right value in the gap.
             temp_var_name <- paste0('area_names_', b)
-            run_subs[[temp_var_name]] <<- substitute(area_names[b], list(b = as.character(b)))
+            run_subs[[temp_var_name]] <<- substitute(as.integer(area_names[b]), list(b = as.character(b)))
             substitute(a || area == temp_var_name, list(
                 temp_var_name = as.symbol(temp_var_name),
                 a = a))
         }, spawnfile$spawnareas, FALSE),
         run_f = run_f))
-    if ('firstspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && (cur_year >= x), list(
+    if ('firstspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && cur_year >= x, list(
         x = as.integer(spawnfile$firstspawnyear)))
-    if ('lastspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && (cur_year <= x), list(
+    if ('lastspawnyear' %in% names(spawnfile)) run_f <- substitute(run_f && cur_year <= x, list(
         x = as.integer(spawnfile$lastspawnyear)))
 
     if (length(run_subs) > 0) {
