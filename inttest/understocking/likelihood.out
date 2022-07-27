@@ -1,0 +1,36 @@
+; Gadget version 2.3.7 running on mfri-gadget Wed Jul 27 17:21:40 2022
+; Summary likelihood information from the current run
+; -- data --
+; year step area component weight likelihood_value
+1985    1   all      understocking       10 3.3439904e+09
+1985    2   all      understocking       10 3.5866914e+08
+1985    3   all      understocking       10 3.5268773e+09
+1985    4   all      understocking       10 3.6877935e+10
+1986    1   all      understocking       10 1.0808412e+10
+1986    2   all      understocking       10 3.5318345e+08
+1986    3   all      understocking       10 1.1155466e+09
+1986    4   all      understocking       10 1.5164198e+10
+1987    1   all      understocking       10 7.7798045e+09
+1987    2   all      understocking       10 2.1421835e+08
+1987    3   all      understocking       10 1.6944584e+09
+1987    4   all      understocking       10 1.1382324e+11
+1988    1   all      understocking       10 4.4513404e+10
+1988    2   all      understocking       10 1.6558028e+08
+1988    3   all      understocking       10 7.0811384e+09
+1988    4   all      understocking       10 1.2495872e+11
+1989    1   all      understocking       10 2.1601357e+10
+1989    2   all      understocking       10 1.0420735e+10
+1989    3   all      understocking       10 9.5610848e+09
+1982    2          1 ldist.igfs.ss       10   0.28435167
+1983    2          1 ldist.igfs.ss       10   0.28435167
+1984    2          1 ldist.igfs.ss       10   0.29317232
+1985    2          1 ldist.igfs.ss       10    0.2952361
+1986    2          1 ldist.igfs.ss       10    0.2888733
+1987    2          1 ldist.igfs.ss       10   0.28722358
+1982    2          1 ldist.igfs.mn       10    2232.1492
+1983    2          1 ldist.igfs.mn       10    2232.1492
+1984    2          1 ldist.igfs.mn       10    3356.3135
+1985    2          1 ldist.igfs.mn       10    2409.4556
+1986    2          1 ldist.igfs.mn       10    1975.5444
+1987    2          1 ldist.igfs.mn       10    2982.0254
+all   all          1   si.100-120       40   0.12567123

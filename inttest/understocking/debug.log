@@ -1,0 +1,626 @@
+Gadget version 2.3.7 running on mfri-gadget Wed Jul 27 17:21:40 2022
+Log file to record Gadget actions that take place during this run
+
+Starting Gadget from directory: /srv/mfri-gadget/gadget3/inttest/understocking
+using data from directory: /srv/mfri-gadget/gadget3/inttest/understocking
+
+Checking to see if file params.in can be opened ... OK
+Checking to see if file params.out can be opened ... OK
+
+Warning - Gadget has been started without either the -s switch or the -l switch
+Gadget will now set the -s switch to perform a simulation run
+
+Checking to see if file main can be opened ... OK
+Opening file main
+Checking to see if file Modelfiles/time can be opened ... OK
+Opening file Modelfiles/time
+Read time file - number of timesteps 36
+Closing file Modelfiles/time
+Checking to see if file Modelfiles/area can be opened ... OK
+Opening file Modelfiles/area
+Read temperature data - number of entries 36
+Read area file - number of areas 1
+Closing file Modelfiles/area
+Checking to see if file printfile can be opened ... OK
+Opening file printfile
+Checking to see if file lingimm.out can be opened ... OK
+Read printer OK - created printer class stockfullprinter
+Checking to see if file lingmat.out can be opened ... OK
+Read printer OK - created printer class stockfullprinter
+Read predator data - number of predators 1
+Read prey data - number of preys 1
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/igfs.len.agg can be opened ... OK
+Opening file Aggfiles/igfs.len.agg
+Read length aggregation file - number of entries 1
+Closing file Aggfiles/igfs.len.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Checking to see if file igfs.lingimm.out can be opened ... OK
+Read printer OK - created printer class predatorprinter
+Read predator data - number of predators 1
+Read prey data - number of preys 1
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/igfs.len.agg can be opened ... OK
+Opening file Aggfiles/igfs.len.agg
+Read length aggregation file - number of entries 1
+Closing file Aggfiles/igfs.len.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Checking to see if file igfs.lingmat.out can be opened ... OK
+Read printer OK - created printer class predatorprinter
+Read predator data - number of predators 1
+Read prey data - number of preys 1
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.age.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Checking to see if file igfs.lingimm.predprey.out can be opened ... OK
+Read printer OK - created printer class predatorpreyprinter
+Read predator data - number of predators 1
+Read prey data - number of preys 1
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.age.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Checking to see if file igfs.lingmat.predprey.out can be opened ... OK
+Read printer OK - created printer class predatorpreyprinter
+Read predator data - number of predators 1
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Checking to see if file igfs.overcons.out can be opened ... OK
+Read printer OK - created printer class predatoroverprinter
+Checking to see if file likelihood.out can be opened ... OK
+Read printer OK - created printer class likelihoodsummaryprinter
+Checking to see if file likelihood.si.100-120.out can be opened ... OK
+Read printer OK - created printer class likelihoodprinter
+Closing file printfile
+Checking to see if file lingimm can be opened ... OK
+Opening file lingimm
+Checking to see if file Aggfiles/lingimm.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingimm.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingimm.stock.len.agg
+Read basic stock data for stock lingimm
+Read growth data for stock lingimm
+Read natural mortality data for stock lingimm
+Checking to see if file Aggfiles/lingimm.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingimm.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingimm.stock.len.agg
+Read prey data for stock lingimm
+Read predator data for stock lingimm
+Checking to see if file Modelfiles/lingimm.init.normalparam can be opened ... OK
+Opening file Modelfiles/lingimm.init.normalparam
+Read initial conditions data file - number of entries 3
+Closing file Modelfiles/lingimm.init.normalparam
+Read initial conditions data for stock lingimm
+Read migration data for stock lingimm
+Read maturity data for stock lingimm
+Read transition data for stock lingimm
+Read renewal data for stock lingimm
+Read spawning data for stock lingimm
+Read straying data for stock lingimm
+Read stock OK - created stock lingimm
+Closing file lingimm
+Checking to see if file lingmat can be opened ... OK
+Opening file lingmat
+Checking to see if file Aggfiles/lingmat.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingmat.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingmat.stock.len.agg
+Read basic stock data for stock lingmat
+Read growth data for stock lingmat
+Read natural mortality data for stock lingmat
+Checking to see if file Aggfiles/lingmat.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingmat.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingmat.stock.len.agg
+Read prey data for stock lingmat
+Read predator data for stock lingmat
+Checking to see if file Modelfiles/lingmat.init.normalparam can be opened ... OK
+Opening file Modelfiles/lingmat.init.normalparam
+Read initial conditions data file - number of entries 11
+Closing file Modelfiles/lingmat.init.normalparam
+Read initial conditions data for stock lingmat
+Read migration data for stock lingmat
+Read maturity data for stock lingmat
+Read transition data for stock lingmat
+Read renewal data for stock lingmat
+Read spawning data for stock lingmat
+Read straying data for stock lingmat
+Read stock OK - created stock lingmat
+Closing file lingmat
+Checking to see if file Modelfiles/fleet can be opened ... OK
+Opening file Modelfiles/fleet
+Read predation data - number of preys 2
+Checking to see if file Data/fleet.igfs.data can be opened ... OK
+Opening file Data/fleet.igfs.data
+Read amounts data file - number of entries 36
+Closing file Data/fleet.igfs.data
+Read fleet OK - created fleet igfs
+Closing file Modelfiles/fleet
+Checking to see if file likelihood can be opened ... OK
+Opening file likelihood
+Read likelihood OK - created likelihood component understocking
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.age.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read fleet data - number of fleets 1
+Read stock data - number of stocks 2
+Checking to see if file Data/catchdistribution.ldist.igfs.sumofsquares can be opened ... OK
+Opening file Data/catchdistribution.ldist.igfs.sumofsquares
+Read catchdistribution data file - number of entries 175
+Closing file Data/catchdistribution.ldist.igfs.sumofsquares
+Read likelihood OK - created likelihood component ldist.igfs.ss
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.area.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.area.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.age.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/catchdistribution.ldist.igfs.age.agg
+Checking to see if file Aggfiles/catchdistribution.ldist.igfs.len.agg can be opened ... OK
+Opening file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/catchdistribution.ldist.igfs.len.agg
+Read fleet data - number of fleets 1
+Read stock data - number of stocks 2
+Checking to see if file Data/catchdistribution.ldist.igfs.sumofsquares can be opened ... OK
+Opening file Data/catchdistribution.ldist.igfs.sumofsquares
+Read catchdistribution data file - number of entries 175
+Closing file Data/catchdistribution.ldist.igfs.sumofsquares
+Read likelihood OK - created likelihood component ldist.igfs.mn
+Checking to see if file Aggfiles/surveyindices.si.100-120.area.agg can be opened ... OK
+Opening file Aggfiles/surveyindices.si.100-120.area.agg
+Read aggregation file - number of entries 1
+Closing file Aggfiles/surveyindices.si.100-120.area.agg
+Checking to see if file Aggfiles/surveyindices.si.100-120.len.agg can be opened ... OK
+Opening file Aggfiles/surveyindices.si.100-120.len.agg
+Read length aggregation file - number of entries 1
+Closing file Aggfiles/surveyindices.si.100-120.len.agg
+Read stock data - number of stocks 2
+Checking to see if file Data/surveyindices.si.100-120.lengths can be opened ... OK
+Opening file Data/surveyindices.si.100-120.lengths
+Read surveyindex data file - number of entries 4
+Closing file Data/surveyindices.si.100-120.lengths
+Read likelihood OK - created likelihood component si.100-120
+Closing file likelihood
+Closing file main
+
+Finished reading model data files, starting to run simulation
+
+Checking to see if file params.in can be opened ... OK
+Opening file params.in
+Closing file params.in
+Warning in keeper - failed to match switch ling.init.F
+Warning in keeper - no boundlikelihood component found
+No penalties will be applied if any of the parameter bounds are exceeded
+
+Initialising stock lingimm
+Calculated initial condition data for stock lingimm
+Initialising stock lingmat
+Calculated initial condition data for stock lingmat
+Initialising predator igfs
+Initialising likelihood component understocking
+Initialising likelihood component ldist.igfs.ss
+Initialising likelihood component ldist.igfs.mn
+Initialising likelihood component si.100-120
+Initialising printer for output file lingimm.out
+Initialising printer for output file lingmat.out
+Initialising printer for output file igfs.lingimm.out
+Initialising printer for output file igfs.lingmat.out
+Initialising printer for output file igfs.lingimm.predprey.out
+Warning in predatorpreyprinter - maximum age greater than prey age
+Initialising printer for output file igfs.lingmat.predprey.out
+Warning in predatorpreyprinter - minimum age less than prey age
+Initialising printer for output file igfs.overcons.out
+Initialising printer for output file likelihood.out
+Initialising printer for output file likelihood.si.100-120.out
+
+Reset understocking component understocking
+Reset catchdistribution component ldist.igfs.ss
+Reset catchdistribution component ldist.igfs.mn
+Reset surveyindex component si.100-120
+
+Reset time in the simulation to timestep 1
+Reset natural mortality data for stock lingimm
+Reset consumption data for prey lingimm
+Calculated initial condition data for stock lingimm
+Reset stock data for stock lingimm
+Reset natural mortality data for stock lingmat
+Reset consumption data for prey lingmat
+Calculated initial condition data for stock lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 2
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.284352
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 2232.15
+Calculating index for surveyindex component si.100-120
+
+Increased time in the simulation to timestep 3
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 4
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 5
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 6
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.284352
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 2232.15
+Calculating index for surveyindex component si.100-120
+
+Increased time in the simulation to timestep 7
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 8
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 9
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 10
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.293172
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 3356.31
+Calculating index for surveyindex component si.100-120
+
+Increased time in the simulation to timestep 11
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 12
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 13
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 3.34399e+09
+
+Increased time in the simulation to timestep 14
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 3.58669e+08
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.295236
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 2409.46
+Calculating index for surveyindex component si.100-120
+
+Increased time in the simulation to timestep 15
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 3.52688e+09
+
+Increased time in the simulation to timestep 16
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 3.68779e+10
+
+Increased time in the simulation to timestep 17
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.08084e+10
+
+Increased time in the simulation to timestep 18
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 3.53183e+08
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.288873
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 1975.54
+
+Increased time in the simulation to timestep 19
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.11555e+09
+
+Increased time in the simulation to timestep 20
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.51642e+10
+
+Increased time in the simulation to timestep 21
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 7.7798e+09
+
+Increased time in the simulation to timestep 22
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 2.14218e+08
+Calculating likelihood score for catchdistribution component ldist.igfs.ss
+The likelihood score for this component on this timestep is 0.287224
+Calculating likelihood score for catchdistribution component ldist.igfs.mn
+The likelihood score for this component on this timestep is 2982.03
+
+Increased time in the simulation to timestep 23
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.69446e+09
+
+Increased time in the simulation to timestep 24
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.13823e+11
+
+Increased time in the simulation to timestep 25
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 4.45134e+10
+
+Increased time in the simulation to timestep 26
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.6558e+08
+
+Increased time in the simulation to timestep 27
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 7.08114e+09
+
+Increased time in the simulation to timestep 28
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.24959e+11
+
+Increased time in the simulation to timestep 29
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 2.16014e+10
+
+Increased time in the simulation to timestep 30
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 1.04207e+10
+
+Increased time in the simulation to timestep 31
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+The likelihood score for this component on this timestep is 9.56108e+09
+
+Increased time in the simulation to timestep 32
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 33
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 34
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 35
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+
+Increased time in the simulation to timestep 36
+Reset consumption data for prey lingimm
+Reset stock data for stock lingimm
+Reset consumption data for prey lingmat
+Reset stock data for stock lingmat
+Reset predatation data for predator igfs
+Checking understocking likelihood component understocking
+Calculating likelihood score for surveyindex component si.100-120
+Warning in regression - negative slope for regression line -0.000624675
+The likelihood score from the regression line for this component is 0.125671
+
+The simulation has reached the last timestep for the current model run
+
+The current likelihood scores for each component are:
+understocking 4.13363e+12
+ldist.igfs.ss 17.3321
+ldist.igfs.mn 151876
+si.100-120 5.02685
+
+The current overall likelihood score is 4.13363e+12
+
+Checking to see if file params.out can be opened ... OK
+Opening file params.out
+Closing file params.out
+
+Total number of warnings was 6
+
+Gadget simulation finished OK - runtime was 0 seconds

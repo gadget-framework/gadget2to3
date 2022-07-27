@@ -1,0 +1,307 @@
+Gadget version 2.3.7 running on mfri-gadget Wed Jul 27 17:21:32 2022
+Log file to record Gadget actions that take place during this run
+
+Starting Gadget from directory: /srv/mfri-gadget/gadget3/inttest/spawn
+using data from directory: /srv/mfri-gadget/gadget3/inttest/spawn
+
+Checking to see if file params.in can be opened ... OK
+Checking to see if file params.out can be opened ... OK
+
+Warning - Gadget has been started without either the -s switch or the -l switch
+Gadget will now set the -s switch to perform a simulation run
+
+Checking to see if file main can be opened ... OK
+Opening file main
+Checking to see if file Modelfiles/time can be opened ... OK
+Opening file Modelfiles/time
+Read time file - number of timesteps 36
+Closing file Modelfiles/time
+Checking to see if file Modelfiles/area can be opened ... OK
+Opening file Modelfiles/area
+Read temperature data - number of entries 36
+Read area file - number of areas 1
+Closing file Modelfiles/area
+Checking to see if file printfile can be opened ... OK
+Opening file printfile
+Checking to see if file lingimm.out can be opened ... OK
+Read printer OK - created printer class stockfullprinter
+Checking to see if file lingmat.out can be opened ... OK
+Read printer OK - created printer class stockfullprinter
+Closing file printfile
+Checking to see if file lingimm can be opened ... OK
+Opening file lingimm
+Checking to see if file Aggfiles/lingimm.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingimm.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingimm.stock.len.agg
+Read basic stock data for stock lingimm
+Read growth data for stock lingimm
+Read natural mortality data for stock lingimm
+Read prey data for stock lingimm
+Read predator data for stock lingimm
+Checking to see if file Modelfiles/lingimm.init.normalparam can be opened ... OK
+Opening file Modelfiles/lingimm.init.normalparam
+Read initial conditions data file - number of entries 8
+Closing file Modelfiles/lingimm.init.normalparam
+Read initial conditions data for stock lingimm
+Read migration data for stock lingimm
+Read maturity data for stock lingimm
+Read transition data for stock lingimm
+Read renewal data for stock lingimm
+Read spawning data for stock lingimm
+Read straying data for stock lingimm
+Read stock OK - created stock lingimm
+Closing file lingimm
+Checking to see if file lingmat can be opened ... OK
+Opening file lingmat
+Checking to see if file Aggfiles/lingmat.stock.len.agg can be opened ... OK
+Opening file Aggfiles/lingmat.stock.len.agg
+Read length aggregation file - number of entries 35
+Closing file Aggfiles/lingmat.stock.len.agg
+Read basic stock data for stock lingmat
+Read growth data for stock lingmat
+Read natural mortality data for stock lingmat
+Read prey data for stock lingmat
+Read predator data for stock lingmat
+Checking to see if file Modelfiles/lingmat.init.normalparam can be opened ... OK
+Opening file Modelfiles/lingmat.init.normalparam
+Read initial conditions data file - number of entries 11
+Closing file Modelfiles/lingmat.init.normalparam
+Read initial conditions data for stock lingmat
+Read migration data for stock lingmat
+Read maturity data for stock lingmat
+Read transition data for stock lingmat
+Read renewal data for stock lingmat
+Checking to see if file Modelfiles/lingmat.spawn can be opened ... OK
+Opening file Modelfiles/lingmat.spawn
+Read spawning data file
+Closing file Modelfiles/lingmat.spawn
+Read spawning data for stock lingmat
+Read straying data for stock lingmat
+Read stock OK - created stock lingmat
+Closing file lingmat
+Closing file main
+
+Finished reading model data files, starting to run simulation
+
+Checking to see if file params.in can be opened ... OK
+Opening file params.in
+Closing file params.in
+Warning in keeper - failed to match switch lingimm.rec.scalar
+Warning in keeper - failed to match switch lingmat.rec.scalar
+Warning in keeper - failed to match switch ling.init.F
+Warning in keeper - failed to match switch ling.mat.alpha
+Warning in keeper - failed to match switch ling.mat.l50
+Warning in keeper - failed to match switch ling.mat.beta
+Warning in keeper - failed to match switch ling.mat.a50
+Warning in keeper - failed to match switch ling.bbin
+Warning in keeper - failed to match switch ling.k
+Warning in keeper - no boundlikelihood component found
+No penalties will be applied if any of the parameter bounds are exceeded
+
+Initialising stock lingimm
+Calculated initial condition data for stock lingimm
+Initialising stock lingmat
+Calculated initial condition data for stock lingmat
+Warning in input files - no understocking likelihood component found
+Initialising printer for output file lingimm.out
+Initialising printer for output file lingmat.out
+
+
+Reset time in the simulation to timestep 1
+Reset natural mortality data for stock lingimm
+Calculated initial condition data for stock lingimm
+Reset stock data for stock lingimm
+Reset natural mortality data for stock lingmat
+Reset spawning data for stock lingmat
+Calculated initial condition data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 2
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 3
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 4
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 5
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 6
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 7
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 8
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 9
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 10
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 11
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 12
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 13
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 14
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 15
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 16
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 17
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 18
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 19
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 20
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 21
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 22
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 23
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 24
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 25
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 26
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 27
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 28
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 29
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 30
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 31
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 32
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 33
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 34
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 35
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+Increased time in the simulation to timestep 36
+Reset stock data for stock lingimm
+Reset spawning data for stock lingmat
+Reset stock data for stock lingmat
+
+The simulation has reached the last timestep for the current model run
+
+The current likelihood scores for each component are:
+
+The current overall likelihood score is 0
+
+Checking to see if file params.out can be opened ... OK
+Opening file params.out
+Closing file params.out
+
+Total number of warnings was 12
+
+Gadget simulation finished OK - runtime was 0 seconds

@@ -1,0 +1,17 @@
+; Gadget version 2.3.7 running on mfri-gadget Wed Jul 27 17:21:40 2022
+; a simulation run was performed giving a likelihood value of 4.1336256e+12
+; -- data --
+switch	value		lower	upper	optimise
+lingimm.M	           0	       0      100        0
+lingimm.init.scalar	         200	       0      300        0
+lingimm.init	           1	       0      100        0
+ling.Linf	         160	       0      200        0
+lingimm.walpha	       1e-06	       0      100        0
+lingimm.wbeta	           2	       0      100        0
+lingmat.M	           0	       0      100        0
+lingmat.init.scalar	         200	       0      300        0
+lingmat.init	           1	       0      100        0
+lingmat.walpha	       1e-06	       0      100        0
+lingmat.wbeta	           2	       0      100        0
+ling.igfs.alpha	         0.5	       0      100        0
+ling.igfs.l50	          50	       0      100        0

@@ -1,0 +1,10 @@
+; Gadget version 2.3.7 running on mfri-gadget Wed Jul 27 17:21:40 2022
+; Likelihood output file for the likelihood component si.100-120
+; -- data --
+; year step area label number
+1982    2          1     len100      3612.39
+1983    2          1     len100    2060.2772
+1984    2          1     len100     981.3815
+1985    2          1     len100   0.50063279
+; Regression information for area 1
+; len100 intercept 3.3285536 slope -0.00062467513 sse 0.12567123
