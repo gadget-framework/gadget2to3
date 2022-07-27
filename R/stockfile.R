@@ -10,6 +10,9 @@ g2to3_stockfile <- function (path, file_name) {
     }, c(list(
         comment_str = paste0("Create stock definition for ", g2_stock[[1]]$stockname),
         livesonareas = substitute(area_names[x], list(x = as.character(g2_stock[[1]]$livesonareas))),
+        minlength = as.numeric(g2_stock[[1]]$minlength),
+        maxlength = as.numeric(g2_stock[[1]]$maxlength),
+        dl = as.numeric(g2_stock[[1]]$dl),
         stock_var = stock_var), g2_stock[[1]]))
 
     # Check growthandeatlengths matches stock definition
