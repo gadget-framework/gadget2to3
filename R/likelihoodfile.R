@@ -52,7 +52,33 @@ likelihood_catchdistribution <- function (path, g2_likelihood, ...) {
 likelihood_stockdistribution <- likelihood_catchdistribution
 
 likelihood_surveyindices <- function (path, g2_likelihood, ...) {
-    function_f <- call("g3l_distribution_surveyindices_log")  # TODO: linear or log
+    if (g2_likelihood$fittype == 'linearfit') {
+        function_f <- call("g3l_distribution_surveyindices_linear")
+    } else if (g2_likelihood$fittype == 'loglinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_log")
+    } else if (g2_likelihood$fittype == 'fixedslopelinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_linear",
+            beta = g2_likelihood$slope)
+    } else if (g2_likelihood$fittype == 'fixedslopeloglinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_log",
+            beta = g2_likelihood$slope)
+    } else if (g2_likelihood$fittype == 'fixedinterceptlinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_linear",
+            alpha = g2_likelihood$intercept)
+    } else if (g2_likelihood$fittype == 'fixedinterceptloglinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_log",
+            alpha = g2_likelihood$intercept)
+    } else if (g2_likelihood$fittype == 'fixedlinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_linear",
+            alpha = g2_likelihood$intercept,
+            beta = g2_likelihood$slope)
+    } else if (g2_likelihood$fittype == 'fixedloglinearfit') {
+        function_f <- call("g3l_distribution_surveyindices_log",
+            alpha = g2_likelihood$intercept,
+            beta = g2_likelihood$slope)
+    } else {
+        function_f <- call("stop", paste0("Unknown surveyindices fit type ", g2_likelihood$fittype))
+    }
     likelihood_common(path, g2_likelihood, 'g3l_abundancedistribution', function_f)
 }
 
@@ -65,6 +91,13 @@ likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
     obs_data_call <- call('g2to3_aggdata', path, g2_likelihood$datafile)
     for (agg in c('areaaggfile', 'ageaggfile', 'lenaggfile')) {
         if (agg %in% names(g2_likelihood)) obs_data_call[agg] <- g2_likelihood[[agg]]
+    }
+
+    if (identical(g2_likelihood$biomass, 1)) {
+        # surveyindices is grouping by weight
+        obs_data_call[['final_colname']] <- 'weight'
+    } else {
+        obs_data_call[['final_colname']] <- 'number'
     }
 
     out <- call(method_name, g2_likelihood$name, obs_data_call)

@@ -20,8 +20,10 @@ g2to3_aggdata <- function(
         file_name,
         areaaggfile = NULL,
         ageaggfile = NULL,
-        lenaggfile = NULL) {
+        lenaggfile = NULL,
+        final_colname = NULL) {
     data <- Rgadget::read.gadget.file(path, file_name, 'data')[[1]]
+
     if (!is.null(areaaggfile)) {
         attr(data, 'area') <- as.list(Rgadget::read.gadget.file(path, areaaggfile)[[1]])
     }
@@ -31,5 +33,10 @@ g2to3_aggdata <- function(
     if (!is.null(lenaggfile)) {
         attr(data, 'length') <- as.list(Rgadget::read.gadget.file(path, lenaggfile)[[1]])
     }
+
+    if (!is.null(final_colname)) {
+        names(data)[length(names(data))] <- final_colname
+    }
+
     return(data)
 }
