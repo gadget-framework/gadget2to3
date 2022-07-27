@@ -19,7 +19,7 @@ fleet <- function (path, g2_fleet) {
     }, c(list(
         comment_str = paste0("Create fleet definition for ", g2_fleet[[1]]),
         fleetname = g2_fleet[[1]],
-        livesonareas = substitute(area_names[x], list(x = as.character(g2_fleet[[1]]$livesonareas))),
+        livesonareas = substitute(area_names[x], list(x = as.character(g2_fleet$livesonareas))),
         actions_fleet_var = as.symbol(paste0('actions_', fleet_var)),
         action = action,
         fleet_var = fleet_var), g2_fleet))
