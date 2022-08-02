@@ -41,3 +41,36 @@ g2to3_aggdata <- function(
 
     return(data)
 }
+
+# Pre-extract all data in calls within (action_code)
+extract_datacalls <- function(action_code, script_con, output_path) {
+    # Write data to filesystem, and code to re-read it
+    write_data <- function(lookup_name, data) {
+        saveRDS(data, file = paste0(output_path, '/', lookup_name, '.rds'))
+        cat(lookup_name, " <- readRDS('", lookup_name ,".rds')\n", sep = "", file = script_con)
+    }
+    call_replace(action_code,
+        g2to3_data = function (fn, ...) {
+            lookup_name <- gsub('\\W', "_", ..2, perl = TRUE)
+            data <- do.call('g2to3_data', list(...))
+            write_data(lookup_name, data)
+
+            # Replace with reference to lookup_name
+            as.symbol(lookup_name)
+        }, g2to3_timeareadata = function(fn, ...) {
+            x <- sys.call()  # NB: Can't use ..., since it contains a now-broken reference to area_names
+            lookup_name <- gsub('\\W', "_", x[[4]], perl = TRUE)
+            data <- Rgadget::read.gadget.file(x[[3]], x[[4]], 'data')[[1]]
+            write_data(lookup_name, data)
+
+            value_field <- tail(names(data), 1)
+            call("g3_timeareadata", lookup_name, as.symbol(lookup_name), value_field, areas = x[['areas']])
+        }, g2to3_aggdata = function (fn, ...) {
+            lookup_name <- gsub('\\W', "_", ..2, perl = TRUE)
+            data <- do.call('g2to3_aggdata', list(...))
+            write_data(lookup_name, data)
+
+            # Replace with reference to lookup_name
+            as.symbol(lookup_name)
+        })
+}
