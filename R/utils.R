@@ -18,7 +18,7 @@ get_g2tog3 <- function (...) {
 }
 
 # Combine table of forumlas, symbol and value into an if statement
-combine_formulas <- function (fs, default = quote(stop()), ...) {
+combine_formulas <- function (fs, default = NaN, ...) {
     stopifnot(is.list(fs))
     for (i in seq_len(...length())) stopifnot(length(...elt(i)) == length(fs))
     vals <- list(...)
