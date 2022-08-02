@@ -18,71 +18,47 @@ stockfile_initialconditions_normalparam <- function (path, stock_var, sect, g2_s
         stop("Unknown columns in ", sect$normalparamfile, ": ", paste(names(npf), collapse = ", "))
     }
 
+    # Generate area symbols to use when generating if statements
+    area_syms <- lapply(npf[, 'area'], function(x) as.symbol(paste0('area_', x)))
+
     age_factor_f <- lapply(seq_len(nrow(npf)), function (i) {
         modify_fns <- list(function (num) as.symbol("age"))
         names(modify_fns) <- npf[i, 'age']
-        #modify_fns[['g3_param']] <- function (fn, param_name) {
-        #    if 
-        #}
         call_replace(g2to3_formula(npf[i, 'age.factor'][[1]]), modify_fns)
     })
-    if (list.all.equal(age_factor_f)) {
-        age_factor_f <- age_factor_f[[1]]
-    } else {
-        age_factor_f <- call("stop", paste0("Can't turn age.factor into formula: ", age_factor_f))
-    }
+    age_factor_f <- combine_formulas(age_factor_f, age = as.integer(npf[, 'age']), area = area_syms)
 
     area_factor_f <- lapply(seq_len(nrow(npf)), function (i) {
         modify_fns <- list(function (num) as.symbol("area"))
         names(modify_fns) <- npf[i, 'area']
         call_replace(g2to3_formula(npf[i, 'area.factor'][[1]]), modify_fns)
     })
-    if (list.all.equal(area_factor_f)) {
-        area_factor_f <- area_factor_f[[1]]
-    } else {
-        area_factor_f <- call("stop", paste0("Can't turn area.factor into formula: ", area_factor_f))
-    }
+    area_factor_f <- combine_formulas(area_factor_f, age = as.integer(npf[, 'age']), area = area_syms)
 
-    mean_f <- lapply(npf[,'mean'], g2to3_formula)
-    if (list.all.equal(mean_f)) {
-        mean_f <- mean_f[[1]]
-    } else {
-        mean_f <- call("stop", paste0("Can't turn mean into formula: ", mean_f))
-    }
+    out <- call("g3a_initialconditions_normalparam", stock_var)
+    out[['factor_f']] <- gadget3:::f_substitute(
+        quote( age_factor_f * area_factor_f ),
+        list(age_factor_f = age_factor_f, area_factor_f = area_factor_f))
 
-    stddev_f <- lapply(npf[,'stddev'], g2to3_formula)
-    if (list.all.equal(stddev_f)) {
-        stddev_f <- stddev_f[[1]]
-    } else {
-        stddev_f <- call("stop", paste0("Can't turn stddev into formula: ", stddev_f))
-    }
+    out[['mean_f']] <- combine_formulas(
+        lapply(npf[,'mean'], g2to3_formula),
+        age = as.integer(npf[, 'age']),
+        area = area_syms)
 
-    alpha_f <- lapply(npf[,'alpha'], g2to3_formula)
-    if (list.all.equal(alpha_f)) {
-        alpha_f <- alpha_f[[1]]
-    } else {
-        alpha_f <- call("stop", paste0("Can't turn alpha into formula: ", alpha_f))
-    }
+    out[['stddev_f']] <- combine_formulas(
+        lapply(npf[,'stddev'], g2to3_formula),
+        age = as.integer(npf[, 'age']),
+        area = area_syms)
 
-    beta_f <- lapply(npf[,'beta'], g2to3_formula)
-    if (list.all.equal(beta_f)) {
-        beta_f <- beta_f[[1]]
-    } else {
-        beta_f <- call("stop", paste0("Can't turn beta into formula: ", beta_f))
-    }
+    out[['alpha_f']] <- combine_formulas(
+        lapply(npf[,'alpha'], g2to3_formula),
+        age = as.integer(npf[, 'age']),
+        area = area_syms)
 
-    substitute(g3a_initialconditions_normalparam(
-        stock_var,
-        factor_f = factor_f,
-        mean_f = mean_f,
-        stddev_f = stddev_f,
-        alpha_f = alpha_f,
-        beta_f = beta_f), list(
-            stock_var = stock_var,
-            factor_f = gadget3:::f_substitute(quote( age_factor_f * area_factor_f ),
-                list(age_factor_f = age_factor_f, area_factor_f = area_factor_f)),
-            mean_f = mean_f,
-            stddev_f = stddev_f,
-            alpha_f = alpha_f,
-            beta_f = beta_f))
+    out[['beta_f']] <- combine_formulas(
+        lapply(npf[,'beta'], g2to3_formula),
+        age = as.integer(npf[, 'age']),
+        area = area_syms)
+
+    return(out)
 }
