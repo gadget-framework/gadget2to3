@@ -82,6 +82,9 @@ call_replace <- function (f, ...) {
             modify_fn <- modify_fns$fn[[deparse(f[[1]])]]
             if (length(modify_fn) > 0) f <- do.call(modify_fn, as.list(f))
 
+            # If it's now a symbol, return as-is
+            if (!is.call(f)) return(f)
+
             # Recurse through all arguments of this call (but leave the calling symbol alone)
             out <- as.call(c(
                 f[[1]],
