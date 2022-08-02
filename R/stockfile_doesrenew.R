@@ -46,48 +46,26 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
         run_f <- call("stop","Can't translate multi-age renewals")
     }
 
-    factor_f <- lapply(npf[,'number'], g2to3_formula)
-    if (list.all.equal(factor_f)) {
-        factor_f <- factor_f[[1]]
-    } else {
-        run_f <- call("stop","TODO: If statements and year")
-    }
+    out <- call('g3a_renewal_normalparam', stock_var)
+    out[['factor_f']] <- combine_formulas(
+        lapply(npf[,'number'], g2to3_formula),
+        cur_year = as.integer(npf[, 'year']))
 
-    mean_f <- lapply(npf[,'mean'], g2to3_formula)
-    if (list.all.equal(mean_f)) {
-        mean_f <- mean_f[[1]]
-    } else {
-        run_f <- call("stop", paste0("Can't turn mean into formula: ", mean_f))
-    }
+    out[['mean_f']] <- combine_formulas(
+        lapply(npf[,'mean'], g2to3_formula),
+        cur_year = as.integer(npf[, 'year']))
 
-    stddev_f <- lapply(npf[,'stddev'], g2to3_formula)
-    if (list.all.equal(stddev_f)) {
-        stddev_f <- stddev_f[[1]]
-    } else {
-        run_f <- call("stop", paste0("Can't turn stddev into formula: ", stddev_f))
-    }
+    out[['stddev_f']] <- combine_formulas(
+        lapply(npf[,'stddev'], g2to3_formula),
+        cur_year = as.integer(npf[, 'year']))
 
-    alpha_f <- lapply(npf[,'alpha'], g2to3_formula)
-    if (list.all.equal(alpha_f)) {
-        alpha_f <- alpha_f[[1]]
-    } else {
-        run_f <- call("stop", paste0("Can't turn alpha into formula: ", alpha_f))
-    }
+    out[['alpha_f']] <- combine_formulas(
+        lapply(npf[,'alpha'], g2to3_formula),
+        cur_year = as.integer(npf[, 'year']))
 
-    beta_f <- lapply(npf[,'beta'], g2to3_formula)
-    if (list.all.equal(beta_f)) {
-        beta_f <- beta_f[[1]]
-    } else {
-        run_f <- call("stop", paste0("Can't turn beta into formula: ", beta_f))
-    }
-
-    out <- call('g3a_renewal_normalparam',
-        stock_var,
-        factor_f = factor_f,
-        mean_f = mean_f,
-        stddev_f = stddev_f,
-        alpha_f = alpha_f,
-        beta_f = beta_f)
+    out[['beta_f']] <- combine_formulas(
+        lapply(npf[,'beta'], g2to3_formula),
+        cur_year = as.integer(npf[, 'year']))
 
     if (length(run_subs) > 0) {
         out[['run_f']] <- call("substitute",

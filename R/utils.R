@@ -17,6 +17,35 @@ get_g2tog3 <- function (...) {
     }
 }
 
+# Combine table of forumlas, symbol and value into an if statement
+combine_formulas <- function (fs, default = quote(stop()), ...) {
+    stopifnot(is.list(fs))
+    for (i in seq_len(...length())) stopifnot(length(...elt(i)) == length(fs))
+    vals <- list(...)
+
+    # All the same, doesn't make a difference what we choose
+    if (list.all.equal(fs)) return(fs[[1]])
+
+    # Build if call for each value, using temporary symbols for formulas
+    names(fs) <- paste0("__tmp_combine_formulas_", seq_along(fs))
+    out <- Reduce(
+        function (i, rest) {
+            # Compare current value for all values given
+            out <- lapply(names(vals), function(n) call("==", as.symbol(n), vals[[n]][[i]]))
+            # Combine with && calls
+            out <- gadget3:::f_optimize(Reduce(function (f, rest) call("&&", rest, f), out, TRUE))
+            # Add to an if statement
+            call("if", out, as.symbol(names(fs)[[i]]), rest)
+        },
+        seq_along(fs),
+        default,
+        right = TRUE)
+
+    # Replace temporary symbols with actual formulas
+    gadget3:::f_substitute(out, fs)
+}
+# combine_formulas(list(~a, ~b), age = c(1,2), area = c(4,5))
+
 # Descend through call f, when a symbol like key appears, call it's function to modify the call
 call_replace <- function (f, ...) {
     # Either take a single list or use the remaining argument list
