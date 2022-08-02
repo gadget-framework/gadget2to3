@@ -49,7 +49,7 @@ lingmat_actions <- list(
         stddev_f = 0.9,
         alpha_f = 1,
         beta_f = 1,
-        run_f = ~cur_step==1L && area == 1L),
+        run_f = ~cur_step==1L && area == area_1),
     list())
 
 time_actions <- list(
