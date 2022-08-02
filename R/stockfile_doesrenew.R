@@ -17,7 +17,6 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
     }
 
     run_f <- TRUE
-    run_subs <- list()
 
     if (list.all.equal(npf[,'step'])) {
         run_f <- substitute(run_f && cur_step == x, list(
@@ -28,11 +27,9 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
     }
 
     if (list.all.equal(npf[,'area'])) {
-        b <- as.character(npf[1, 'area'])
-        temp_var_name <- paste0('area_names_', b)
-        run_subs[[temp_var_name]] <- substitute(as.integer(area_names[b]), list(b = as.character(b)))
-        run_f <- substitute(run_f && area == temp_var_name, list(
-            temp_var_name = as.symbol(temp_var_name),
+        area_var_name <- paste0('area_', as.character(npf[1, 'area']))
+        run_f <- substitute(run_f && area == area_var_name, list(
+            area_var_name = as.symbol(area_var_name),
             run_f = run_f))
     } else {
         run_f <- call("stop", "Can't translate multi-area renewals")
@@ -67,13 +64,7 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
         lapply(npf[,'beta'], g2to3_formula),
         cur_year = as.integer(npf[, 'year']))
 
-    if (length(run_subs) > 0) {
-        out[['run_f']] <- call("substitute",
-            gadget3:::f_optimize(run_f),
-            as.call(c( as.symbol("list"), run_subs )))
-    } else {
-        out[['run_f']] <- call("quote", gadget3:::f_optimize(run_f))
-    }
+    out[['run_f']] <- call("quote", gadget3:::f_optimize(run_f))
 
     return(out)
 }

@@ -24,7 +24,7 @@ lingimm_actions <- list(
         stddev_f = ~10, 
         alpha_f = ~g3_param("lingimm.walpha"),
         beta_f = ~g3_param("lingimm.wbeta"),
-        run_f = ~cur_step == 1L&& area == 1L && age == 3L),
+        run_f = ~cur_step == 1L && area == area_1 && age == 3L),
     g3a_naturalmortality(lingimm, g3a_naturalmortality_exp(~g3_param("lingimm.M"))),
     g3a_growmature(lingimm,
         impl_f = g3a_grow_impl_bbinom(
