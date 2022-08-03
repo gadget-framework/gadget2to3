@@ -33,7 +33,7 @@ fleet_totalfleet <- function (path, fleet_var, g2_fleet) {
                g2to3_timeareadata(path, data_file_name, areas = area_names))), list(
        fleet_var = fleet_var,
        stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
-       sutabilities = sutabilities_fn_list(g2_fleet$suitability),
+       sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
        path = path,
        data_file_name = g2_fleet$amount))
 }

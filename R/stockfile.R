@@ -56,7 +56,7 @@ stockfile_naturalmortality <- function (path, stock_var, sect, g2_stock) {
     nm <- sect$naturalmortality
     if (which(!duplicated(nm)) == 1) {
         # All the same, can just use the first
-        nm_f <- g2to3_formula(nm[[1]])
+        nm_f <- g2to3_formula(path, nm[[1]])
     } else {
         stop("Not sure how to handle naturalmortality = ", paste(nm))
     }

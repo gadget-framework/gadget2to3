@@ -24,14 +24,14 @@ stockfile_initialconditions_normalparam <- function (path, stock_var, sect, g2_s
     age_factor_f <- lapply(seq_len(nrow(npf)), function (i) {
         modify_fns <- list(function (num) as.symbol("age"))
         names(modify_fns) <- npf[i, 'age']
-        call_replace(g2to3_formula(npf[i, 'age.factor'][[1]]), modify_fns)
+        call_replace(g2to3_formula(path, npf[i, 'age.factor'][[1]]), modify_fns)
     })
     age_factor_f <- combine_formulas(age_factor_f, age = as.integer(npf[, 'age']), area = area_syms)
 
     area_factor_f <- lapply(seq_len(nrow(npf)), function (i) {
         modify_fns <- list(function (num) as.symbol("area"))
         names(modify_fns) <- npf[i, 'area']
-        call_replace(g2to3_formula(npf[i, 'area.factor'][[1]]), modify_fns)
+        call_replace(g2to3_formula(path, npf[i, 'area.factor'][[1]]), modify_fns)
     })
     area_factor_f <- combine_formulas(area_factor_f, age = as.integer(npf[, 'age']), area = area_syms)
 
@@ -41,22 +41,22 @@ stockfile_initialconditions_normalparam <- function (path, stock_var, sect, g2_s
         list(age_factor_f = age_factor_f, area_factor_f = area_factor_f))
 
     out[['mean_f']] <- combine_formulas(
-        lapply(npf[,'mean'], g2to3_formula),
+        lapply(npf[,'mean'], function(x) g2to3_formula(path, x)),
         age = as.integer(npf[, 'age']),
         area = area_syms)
 
     out[['stddev_f']] <- combine_formulas(
-        lapply(npf[,'stddev'], g2to3_formula),
+        lapply(npf[,'stddev'], function(x) g2to3_formula(path, x)),
         age = as.integer(npf[, 'age']),
         area = area_syms)
 
     out[['alpha_f']] <- combine_formulas(
-        lapply(npf[,'alpha'], g2to3_formula),
+        lapply(npf[,'alpha'], function(x) g2to3_formula(path, x)),
         age = as.integer(npf[, 'age']),
         area = area_syms)
 
     out[['beta_f']] <- combine_formulas(
-        lapply(npf[,'beta'], g2to3_formula),
+        lapply(npf[,'beta'], function(x) g2to3_formula(path, x)),
         age = as.integer(npf[, 'age']),
         area = area_syms)
 

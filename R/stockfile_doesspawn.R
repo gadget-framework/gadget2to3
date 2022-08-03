@@ -6,11 +6,11 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
         as.symbol(paste0("g3a_spawn_recruitment_", spawnfile$recruitment[[1]])),
         lapply(
             tail(spawnfile$recruitment, -1),
-            g2to3_formula)))
+            function(x) g2to3_formula(path, x))))
 
-    out[['proportion_f']] <- stockfile_doesspawn_lengthsel(spawnfile$proportionfunction)
-    out[['mortality_f']] <- stockfile_doesspawn_lengthsel(spawnfile$mortalityfunction)
-    out[['weightloss_f']] <- stockfile_doesspawn_lengthsel(spawnfile$weightlossfunction)
+    out[['proportion_f']] <- stockfile_doesspawn_lengthsel(path, spawnfile$proportionfunction)
+    out[['mortality_f']] <- stockfile_doesspawn_lengthsel(path, spawnfile$mortalityfunction)
+    out[['weightloss_f']] <- stockfile_doesspawn_lengthsel(path, spawnfile$weightlossfunction)
 
     output_ratios <- as.numeric(spawnfile$spawnstocksandratios[seq(2, length(spawnfile$spawnstocksandratios), 2)])
     names(output_ratios) <- spawnfile$spawnstocksandratios[seq(1, length(spawnfile$spawnstocksandratios), 2)]
@@ -19,10 +19,10 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
         out[['output_ratios']] <- output_ratios
     }
 
-    out[['mean_f']] <- g2to3_formula(spawnfile$stockparameters[[1]])
-    out[['stddev_f']] <- g2to3_formula(spawnfile$stockparameters[[2]])
-    out[['alpha_f']] <- g2to3_formula(spawnfile$stockparameters[[3]])
-    out[['beta_f']] <- g2to3_formula(spawnfile$stockparameters[[4]])
+    out[['mean_f']] <- g2to3_formula(path, spawnfile$stockparameters[[1]])
+    out[['stddev_f']] <- g2to3_formula(path, spawnfile$stockparameters[[2]])
+    out[['alpha_f']] <- g2to3_formula(path, spawnfile$stockparameters[[3]])
+    out[['beta_f']] <- g2to3_formula(path, spawnfile$stockparameters[[4]])
 
     run_f <- quote(TRUE)
     run_f <- substitute(run_f && x, list(
@@ -49,18 +49,18 @@ stockfile_doesspawn <- function (path, stock_var, sect, ...) {
     return(out)
 }
 
-stockfile_doesspawn_lengthsel <- function(sel) {
+stockfile_doesspawn_lengthsel <- function(path, sel) {
     if (sel[[1]] == 'exponential') {
         call("g3_suitability_exponentiall50",
             # NB: exponentiall50 needs to negate alpha to match gadget2
-            alpha = gadget3:::f_substitute(quote(-x), list(x = g2to3_formula(sel[[2]]))),
-            l50 = g2to3_formula(sel[[3]]))
+            alpha = gadget3:::f_substitute(quote(-x), list(x = g2to3_formula(path, sel[[2]]))),
+            l50 = g2to3_formula(path, sel[[3]]))
     } else if (sel[[1]] == 'straightline') {
         call("g3_suitability_straightline",
-            alpha = g2to3_formula(sel[[2]]),
-            beta = g2to3_formula(sel[[3]]))
+            alpha = g2to3_formula(path, sel[[2]]),
+            beta = g2to3_formula(path, sel[[3]]))
     } else if (sel[[1]] == 'constant') {
-        g2to3_formula(sel[[2]])
+        g2to3_formula(path, sel[[2]])
     } else {
         substitute(stop("Unknown selectivity function ", sel), list(sel = sel))
     }

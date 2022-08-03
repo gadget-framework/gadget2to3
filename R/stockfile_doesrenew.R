@@ -45,23 +45,23 @@ stockfile_doesrenew_normalparam <- function (path, stock_var, sect, g2_stock) {
 
     out <- call('g3a_renewal_normalparam', stock_var)
     out[['factor_f']] <- combine_formulas(
-        lapply(npf[,'number'], g2to3_formula),
+        lapply(npf[,'number'], function(x) g2to3_formula(path, x)),
         cur_year = as.integer(npf[, 'year']))
 
     out[['mean_f']] <- combine_formulas(
-        lapply(npf[,'mean'], g2to3_formula),
+        lapply(npf[,'mean'], function(x) g2to3_formula(path, x)),
         cur_year = as.integer(npf[, 'year']))
 
     out[['stddev_f']] <- combine_formulas(
-        lapply(npf[,'stddev'], g2to3_formula),
+        lapply(npf[,'stddev'], function(x) g2to3_formula(path, x)),
         cur_year = as.integer(npf[, 'year']))
 
     out[['alpha_f']] <- combine_formulas(
-        lapply(npf[,'alpha'], g2to3_formula),
+        lapply(npf[,'alpha'], function(x) g2to3_formula(path, x)),
         cur_year = as.integer(npf[, 'year']))
 
     out[['beta_f']] <- combine_formulas(
-        lapply(npf[,'beta'], g2to3_formula),
+        lapply(npf[,'beta'], function(x) g2to3_formula(path, x)),
         cur_year = as.integer(npf[, 'year']))
 
     out[['run_f']] <- call("quote", gadget3:::f_optimize(run_f))

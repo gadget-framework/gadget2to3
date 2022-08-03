@@ -1,11 +1,11 @@
 stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
     if (sect$growthfunction == 'lengthvbsimple') {
         delta_len_f <- substitute(g3a_grow_lengthvbsimple(linf, kappa), list(
-            linf  = g2to3_formula(sect$growthparameters[[1]]),
-            kappa = g2to3_formula(sect$growthparameters[[2]])))
+            linf  = g2to3_formula(path, sect$growthparameters[[1]]),
+            kappa = g2to3_formula(path, sect$growthparameters[[2]])))
         delta_wgt_f <- substitute(g3a_grow_weightsimple(alpha, beta), list(
-            alpha = g2to3_formula(sect$growthparameters[[3]]),
-            beta  = g2to3_formula(sect$growthparameters[[4]])))
+            alpha = g2to3_formula(path, sect$growthparameters[[3]]),
+            beta  = g2to3_formula(path, sect$growthparameters[[4]])))
     } else {
         delta_len_f <- substitute( stop("Can't translate ", fn, " with params: ", params), list(
             fn = sect$growthfunction,
@@ -22,7 +22,7 @@ stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
             maxlengthgroupgrowth = mlgg), list(
                 delta_len_f = delta_len_f,
                 delta_wgt_f = delta_wgt_f,
-                beta_f = g2to3_formula(sect$beta[[1]]),
+                beta_f = g2to3_formula(path, sect$beta[[1]]),
                 mlgg = as.integer(sect$maxlengthgroupgrowth[[1]]))))
 
     if (g2_stock[['doesmature']]$doesmature == 1) {
@@ -32,10 +32,10 @@ stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
         if (sect$maturityfunction == "constant") {
             out[['maturity_f']] <- substitute(g3a_mature_constant(
                 alpha = alpha, l50 = l50, beta = beta, a50 = a50), list(
-                    alpha = g2to3_formula(matfile$coefficients[[1]]),
-                    l50 = g2to3_formula(matfile$coefficients[[2]]),
-                    beta = g2to3_formula(matfile$coefficients[[3]]),
-                    a50 = g2to3_formula(matfile$coefficients[[4]])))
+                    alpha = g2to3_formula(path, matfile$coefficients[[1]]),
+                    l50 = g2to3_formula(path, matfile$coefficients[[2]]),
+                    beta = g2to3_formula(path, matfile$coefficients[[3]]),
+                    a50 = g2to3_formula(path, matfile$coefficients[[4]])))
             out[['transition_f']] <- call("quote", gadget3:::f_optimize(Reduce(
                 function (a, b) substitute(a || cur_step == b, list(a = a, b = as.integer(b))),
                 matfile$maturitysteps,
@@ -43,10 +43,10 @@ stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
         } else if (sect$maturityfunction == "continuous") {
             out[['maturity_f']] <- substitute(g3a_mature_continuous(
                 alpha = alpha, l50 = l50, beta = beta, a50 = a50), list(
-                    alpha = g2to3_formula(matfile$coefficients[[1]]),
-                    l50 = g2to3_formula(matfile$coefficients[[2]]),
-                    beta = g2to3_formula(matfile$coefficients[[3]]),
-                    a50 = g2to3_formula(matfile$coefficients[[4]])))
+                    alpha = g2to3_formula(path, matfile$coefficients[[1]]),
+                    l50 = g2to3_formula(path, matfile$coefficients[[2]]),
+                    beta = g2to3_formula(path, matfile$coefficients[[3]]),
+                    a50 = g2to3_formula(path, matfile$coefficients[[4]])))
             out[['transition_f']] <- TRUE
         } else {
             out[['maturity_f']] <- substitute( stop("Can't translate ", fn, " with params: ", params), list(
