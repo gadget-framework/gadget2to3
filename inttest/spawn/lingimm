@@ -21,7 +21,9 @@ dl      4
 normalparamfile Modelfiles/lingimm.init.normalparam
 doesmigrate     0
 doesmature      0
-doesmove        0
+doesmove        1
+transitionstocksandratios	lingmat	1
+transitionstep	4
 doesrenew       0
 doesspawn       0
 doesstray       0

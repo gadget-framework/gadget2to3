@@ -23,7 +23,7 @@ lingimm_actions <- list(
         alpha_f = ~g3_param("lingimm.walpha"),
         beta_f = ~g3_param("lingimm.wbeta")),
     g3a_naturalmortality(lingimm, g3a_naturalmortality_exp(~g3_param("lingimm.M"))),
-    g3a_age(lingimm),
+    g3a_age(lingimm, output_stocks = list(lingmat), run_f = quote( cur_step == 4L )),
     list())
 
 lingmat_actions <- list(

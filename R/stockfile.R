@@ -29,8 +29,10 @@ g2to3_stockfile <- function (path, file_name) {
         sect <- g2_stock[[i]]
         sect_name <- names(g2_stock)[[i]]
         if (i == 1) {
-            # First section doesn't have an action, but we should at least have ageing
-            substitute(g3a_age(stock_var), list(stock_var = stock_var))
+            # First section doesn't have an action
+        } else if (sect_name == 'doesmove') {
+            # Always have movement (i.e. ageing), even when movement to mature stock is disabled
+            stockfile_doesmove(path, stock_var, sect, g2_stock)
         } else if (length(sect) == 1 && length(sect[[1]]) == 1 && sect[[1]][[1]] == 0) {
             # Action is disabled, so nothing to do
         } else {
@@ -50,6 +52,19 @@ g2to3_stockfile <- function (path, file_name) {
 
 stockfile_iseaten <- function (path, stock_var, sect, g2_stock) {
     NULL
+}
+
+stockfile_doesmove <- function (path, stock_var, sect, g2_stock) {
+    # NB: We always age, even if doesmove is turned off
+    out <- call("g3a_age", stock_var)
+    if (sect[[1]][[1]] == 1) {
+        output_ratios <- as.numeric(sect$transitionstocksandratios[seq(2, length(sect$transitionstocksandratios), 2)])
+        names(output_ratios) <- sect$transitionstocksandratios[seq(1, length(sect$transitionstocksandratios), 2)]
+        out[['output_stocks']] <- as.call(c(as.symbol("list"), lapply(names(output_ratios), as.symbol)))
+        out[['output_ratios']] <- output_ratios
+        out[['run_f']] = substitute(quote(cur_step == x), list(x = sect$transitionstep))
+    }
+    return(out)
 }
 
 stockfile_naturalmortality <- function (path, stock_var, sect, g2_stock) {
