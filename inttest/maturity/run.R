@@ -15,6 +15,17 @@ lingmat <- g3_stock('lingmat', seq(20, 156, 4)) %>%
 
 igfs <- g3_fleet('igfs') %>% g3s_livesonareas(c("1" = 1))
 
+tv_annualgrowth <- g3_timevariable('annualgrowth', list(
+    "init" = quote( 0.001 * g3_param("ling.k1") ),
+    "1983-01" = quote( 0.001 * g3_param("ling.k2") ),
+    "1984-01" = quote( 0.001 * g3_param("ling.k1") ),
+    "1985-01" = quote( 0.001 * g3_param("ling.k2") ),
+    "1986-01" = quote( 0.001 * g3_param("ling.k1") ),
+    "1987-01" = quote( 0.001 * g3_param("ling.k2") ),
+    "1988-01" = quote( 0.001 * g3_param("ling.k1") ),
+    "1989-01" = quote( 0.001 * g3_param("ling.k2") ),
+    "1990-01" = quote( 0.001 * g3_param("ling.k1") ) ))
+
 lingimm_actions <- list(
     g3a_initialconditions_normalparam(lingimm,
         factor_f = ~(age * g3_param("lingimm.init")) * g3_param("lingimm.init.scalar"),
@@ -25,7 +36,7 @@ lingimm_actions <- list(
     g3a_naturalmortality(lingimm, g3a_naturalmortality_exp(~g3_param("lingimm.M"))),
     g3a_growmature(lingimm,
         impl_f = g3a_grow_impl_bbinom(
-            g3a_grow_lengthvbsimple(~g3_param("ling.Linf"), ~0.001 * g3_param("ling.k")),
+            g3a_grow_lengthvbsimple(~g3_param("ling.Linf"), tv_annualgrowth),
             g3a_grow_weightsimple(~g3_param("lingimm.walpha"), ~g3_param("lingimm.wbeta")),
             beta_f = ~10 * g3_param("ling.bbin"),
             maxlengthgroupgrowth = 15),

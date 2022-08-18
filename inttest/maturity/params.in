@@ -16,4 +16,5 @@ ling.mat.alpha	0.007	0	1	1
 ling.mat.l50	75	10	200	1
 ling.Linf	160	0	200	0
 ling.bbin       6       1e-08   100     1
-ling.k  10      1      100     1
+ling.k1  10      1      100     1
+ling.k2  20      1      100     1

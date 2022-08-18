@@ -1,7 +1,16 @@
 g2to3_formula <- function (path, g2f) {
     if (is.character(g2f) && file.exists(file.path(path, g2f))) {
-        # TODO: Read Time/stock variable
-        return(substitute(stop(str), list(str = paste0("Cannot parse Time/Stock variable ", g2f))))
+        tvfile <- Rgadget::read.gadget.file(path, g2f, file_type = 'timevariable', recursive = FALSE)
+
+        if (is.null(tvfile[[1]]$timedata)) {
+          return(substitute( stop("No timedata in timevariable file", g2f), g2f = g2f))
+        }
+
+        fs <- lapply(tvfile[[1]]$timedata$value, function (x) g2to3_formula(path, x))
+        names(fs) <- paste0(tvfile[[1]]$timedata$year, '-', tvfile[[1]]$timedata$step)
+        names(fs)[[1]] <- 'init'
+
+        return(g3_timevariable(names(tvfile[[1]])[[1]], fs))
     }
 
     out <- if (is.call(g2f)) g2f else if (is.na(g2f)) quote(NA) else Rgadget::parse.gadget.formulae(g2f)

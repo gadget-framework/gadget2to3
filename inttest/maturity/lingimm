@@ -10,7 +10,7 @@ refweightfile   Modelfiles/lingimm.refwgt
 growthandeatlengths     Aggfiles/lingimm.stock.len.agg
 doesgrow	1
 growthfunction	lengthvbsimple
-growthparameters	#ling.Linf	(* 0.001 #ling.k)	#lingimm.walpha	#lingimm.wbeta
+growthparameters	#ling.Linf	Modelfiles/timevariableK.imm	#lingimm.walpha	#lingimm.wbeta
 beta	(* 10 #ling.bbin)
 maxlengthgroupgrowth	15
 naturalmortality        #lingimm.M      #lingimm.M      #lingimm.M      #lingimm.M      #lingimm.M      #lingimm.M      #lingimm.M      #lingimm.M

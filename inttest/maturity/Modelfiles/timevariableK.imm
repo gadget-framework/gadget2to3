@@ -1,0 +1,12 @@
+annualgrowth
+timedata
+; year	step	value
+1982	1	(* 0.001 #ling.k1)
+1983	1	(* 0.001 #ling.k2)
+1984	1	(* 0.001 #ling.k1)
+1985	1	(* 0.001 #ling.k2)
+1986	1	(* 0.001 #ling.k1)
+1987	1	(* 0.001 #ling.k2)
+1988	1	(* 0.001 #ling.k1)
+1989	1	(* 0.001 #ling.k2)
+1990	1	(* 0.001 #ling.k1)
