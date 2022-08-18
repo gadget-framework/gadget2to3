@@ -1,6 +1,6 @@
 Package: gadget2to3
 Type: Package
-Title: Translate g2 model files into g3
+Title: Translate G2 Model Files into G3
 Version: 0.1.999
 Date: 2022-07-15
 Authors@R: c(person("Jamie", "Lentin", email="lentinj@shuttlethread.com",role = c("aut", "cre")),
