@@ -1,6 +1,6 @@
 # Generate parameters suitable for R model
 g2to3_params_r <- function(path, file_name, model_var_name = 'model_fn', out_var_name = file_name) {
-    param_table <- read.table(paste0(path, '/', file_name), header = TRUE, comment.char = ";")
+    param_table <- utils::read.table(paste0(path, '/', file_name), header = TRUE, comment.char = ";")
 
     call("{", as.call(c(as.symbol("{"),  # }} NB: Double-nested { for neater g2to3_script output
         substitute(out_var <- attr(model_var, 'parameter_template'), list(
@@ -15,7 +15,7 @@ g2to3_params_r <- function(path, file_name, model_var_name = 'model_fn', out_var
 }
 
 g2to3_params_tmb <- function(path, file_name, model_var_name = 'model_cpp', out_var_name = file_name) {
-    param_table <- read.table(paste0(path, '/', file_name), header = TRUE, comment.char = ";")
+    param_table <- utils::read.table(paste0(path, '/', file_name), header = TRUE, comment.char = ";")
 
     call("{", as.call(c(as.symbol("{"),  # }} NB: Double-nested { for neater g2to3_script output
         substitute(out_var <- attr(model_var, 'parameter_template'), list(

@@ -10,7 +10,7 @@ g2to3_formula <- function (path, g2f) {
         names(fs) <- paste0(tvfile[[1]]$timedata$year, '-', tvfile[[1]]$timedata$step)
         names(fs)[[1]] <- 'init'
 
-        return(g3_timevariable(names(tvfile[[1]])[[1]], fs))
+        return(gadget3::g3_timevariable(names(tvfile[[1]])[[1]], fs))
     }
 
     out <- if (is.call(g2f)) g2f else if (is.na(g2f)) quote(NA) else Rgadget::parse.gadget.formulae(g2f)
