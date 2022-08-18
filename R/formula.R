@@ -3,7 +3,7 @@ g2to3_formula <- function (path, g2f) {
         tvfile <- Rgadget::read.gadget.file(path, g2f, file_type = 'timevariable', recursive = FALSE)
 
         if (is.null(tvfile[[1]]$timedata)) {
-          return(substitute( stop("No timedata in timevariable file", g2f), g2f = g2f))
+          return(substitute( stop("No timedata in timevariable file", g2f), list(g2f = g2f)))
         }
 
         fs <- lapply(tvfile[[1]]$timedata$value, function (x) g2to3_formula(path, x))
