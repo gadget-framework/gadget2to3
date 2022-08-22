@@ -23,7 +23,8 @@ g2to3_script(
     Root of a gadget2 model directory.
   }
   \item{output_path}{
-    Directory to write script, and ancillary data, to.
+    Directory to write script and ancillary data, to.
+    If it doesn't exist, it will be created.
   }
   \item{output_script}{
     Script containing g3 model.
