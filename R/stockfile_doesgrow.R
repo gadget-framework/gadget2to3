@@ -1,5 +1,6 @@
 stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
-    if (sect$growthfunction == 'lengthvbsimple') {
+    func_name <- tolower(sect$growthfunction)
+    if (func_name == 'lengthvbsimple') {
         delta_len_f <- substitute(g3a_grow_lengthvbsimple(linf, kappa), list(
             linf  = g2to3_formula(path, sect$growthparameters[[1]]),
             kappa = g2to3_formula(path, sect$growthparameters[[2]])))
@@ -28,8 +29,9 @@ stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
     if (g2_stock[['doesmature']]$doesmature == 1) {
         sect <- g2_stock[['doesmature']]
         matfile <- Rgadget::read.gadget.file(path, sect$maturityfile, recursive = FALSE)[[1]]
+        func_name <- tolower(sect$maturityfunction)
 
-        if (sect$maturityfunction == "constant") {
+        if (func_name == "constant") {
             out[['maturity_f']] <- substitute(g3a_mature_constant(
                 alpha = alpha, l50 = l50, beta = beta, a50 = a50), list(
                     alpha = g2to3_formula(path, matfile$coefficients[[1]]),
@@ -40,7 +42,7 @@ stockfile_doesgrow <- function (path, stock_var, sect, g2_stock) {
                 function (a, b) substitute(a || cur_step == b, list(a = a, b = as.integer(b))),
                 matfile$maturitysteps,
                 FALSE)))
-        } else if (sect$maturityfunction == "continuous") {
+        } else if (func_name == "continuous") {
             out[['maturity_f']] <- substitute(g3a_mature_continuous(
                 alpha = alpha, l50 = l50, beta = beta, a50 = a50), list(
                     alpha = g2to3_formula(path, matfile$coefficients[[1]]),

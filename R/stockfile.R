@@ -1,6 +1,7 @@
 g2to3_stockfile <- function (path, file_name) {
     g2_stock <- Rgadget::read.gadget.file(path, file_name, 'stock', recursive = FALSE)
     stock_var <- as.symbol(g2_stock[[1]]$stockname)
+    names(g2_stock[[1]]) <- tolower(names(g2_stock[[1]]))
 
     init_code <- substitute({
         comment(comment_str)
@@ -39,6 +40,7 @@ g2to3_stockfile <- function (path, file_name) {
 
     actions_code <- lapply(seq_along(g2_stock), function (i) {
         sect <- g2_stock[[i]]
+        names(sect) <- tolower(names(sect))
         sect_name <- names(g2_stock)[[i]]
         if (i == 1) {
             # First section doesn't have an action
