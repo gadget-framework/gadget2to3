@@ -18,9 +18,21 @@ g2to3_stockfile <- function (path, file_name) {
     # Check growthandeatlengths matches stock definition
     if (length(g2_stock[[1]]$growthandeatlengths) > 0) {
         gelengths <- Rgadget::read.gadget.file(path, g2_stock[[1]]$growthandeatlengths)[[1]]
+        if (!is.null(gelengths$lower)) {
+            # -- data -- has been added, turning it into a data.frame
+            gelengths_seq <- as.vector(c(gelengths$lower, tail(gelengths$upper, 1)))
+        } else {
+            # List of lists
+            gelengths_seq <- as.vector(c(
+                # All lower bounds
+                vapply(gelengths, function(x) x[[1]], numeric(1)),
+                # The final upper bound
+                tail(gelengths, 1)[[1]][[2]],
+                NULL))
+        }
         if (!all.equal(
-                seq(g2_stock[[1]]$minlength, g2_stock[[1]]$maxlength - g2_stock[[1]]$dl, g2_stock[[1]]$dl),
-                gelengths$lower) || tail(gelengths$upper, 1) != g2_stock[[1]]$maxlength) {
+                seq(g2_stock[[1]]$minlength, g2_stock[[1]]$maxlength, g2_stock[[1]]$dl),
+                gelengths_seq)) {
             stop("Gadget3 doesn't support differing growth/eat lengths")
         }
     }
