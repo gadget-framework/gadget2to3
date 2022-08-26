@@ -37,3 +37,29 @@ fleet_totalfleet <- function (path, fleet_var, g2_fleet) {
        path = path,
        data_file_name = g2_fleet$amount))
 }
+
+fleet_numberfleet <- function (path, fleet_var, g2_fleet) {
+   substitute(
+       g3a_predate_fleet(fleet_var, stock_vars,
+           suitabilities = sutabilities,
+           catchability_f = g3a_predate_catchability_numberfleet(
+               g2to3_timeareadata(path, data_file_name, areas = area_names))), list(
+       fleet_var = fleet_var,
+       stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
+       sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
+       path = path,
+       data_file_name = g2_fleet$amount))
+}
+
+fleet_linearfleet <- function (path, fleet_var, g2_fleet) {
+   substitute(
+       g3a_predate_fleet(fleet_var, stock_vars,
+           suitabilities = sutabilities,
+           catchability_f = g3a_predate_catchability_linearfleet(
+               g2to3_timeareadata(path, data_file_name, areas = area_names))), list(
+       fleet_var = fleet_var,
+       stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
+       sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
+       path = path,
+       data_file_name = g2_fleet$amount))
+}
