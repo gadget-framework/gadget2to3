@@ -3,17 +3,36 @@ g2to3_stockfile <- function (path, file_name) {
     stock_var <- as.symbol(g2_stock[[1]]$stockname)
     names(g2_stock[[1]]) <- tolower(names(g2_stock[[1]]))
 
+    rwf <- Rgadget::read.gadget.file(path, g2_stock[[1]]$refweightfile, 'data', recursive = FALSE)[[1]]
+    if (!identical(names(rwf), c("length", "weight"))) {
+        stop("Unknown columns in ", g2_stock[[1]]$refweightfile, ": ", paste(names(npf), collapse = ", "))
+    }
+    if (!isTRUE(all.equal(rwf[,1], seq(
+            g2_stock[[1]]$minlength,
+            g2_stock[[1]]$maxlength - g2_stock[[1]]$dl,
+            g2_stock[[1]]$dl) + (g2_stock[[1]]$dl / 2)))) {
+        warning("Incomplete ", g2_stock[[1]]$refweightfile, ": Should contain all midlengths")
+        refweight_code <- NULL
+    } else {
+        refweight_code <- substitute(g2to3_data(path, refweightfile)$weight, list(
+            path = path,
+            refweightfile =  g2_stock[[1]]$refweightfile))
+    }
+
     init_code <- substitute({
         comment(comment_str)
         stock_var <- g3_stock(stockname, seq(minlength, maxlength - dl, dl))
         stock_var <- g3s_livesonareas(stock_var, livesonareas)
         stock_var <- g3s_age(stock_var, minage, maxage)
+        refweight_var <- refweight_code
     }, c(list(
         comment_str = paste0("Create stock definition for ", g2_stock[[1]]$stockname),
         livesonareas = substitute(area_names[x], list(x = as.character(g2_stock[[1]]$livesonareas))),
         minlength = as.numeric(g2_stock[[1]]$minlength),
         maxlength = as.numeric(g2_stock[[1]]$maxlength),
         dl = as.numeric(g2_stock[[1]]$dl),
+        refweight_var = as.symbol(paste0(stock_var, "_refweight")),
+        refweight_code = refweight_code,
         stock_var = stock_var), g2_stock[[1]]))
 
     # Check growthandeatlengths matches stock definition
