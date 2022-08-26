@@ -9,7 +9,7 @@ sutabilities_fn_list <- function(path, suitability) {
         if (suit[[1]] != 'function') stop("Invalid suitability ", suit)
 
         as.call(c(
-            as.symbol(paste0("g3_suitability_", suit[[2]])),
-            lapply(tail(suit, 2),  function(x) g2to3_formula(path, x))))
+            as.symbol(paste0("g3_suitability_", tolower(suit[[2]]))),
+            lapply(tail(suit, -2),  function(x) g2to3_formula(path, x))))
     })))
 }
