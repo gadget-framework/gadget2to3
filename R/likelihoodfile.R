@@ -88,6 +88,15 @@ likelihood_surveyindices <- function (path, g2_likelihood, ...) {
     likelihood_common(path, g2_likelihood, 'g3l_abundancedistribution', function_f)
 }
 
+likelihood_catchinkilos <- function (path, g2_likelihood, ...) {
+    if (g2_likelihood[['function']] == 'sumofsquares') {
+        function_f <- call("g3l_distribution_sumofsquaredlogratios")
+    } else {
+        function_f <- call("stop", paste0("Unknown surveyindices fit type ", g2_likelihood[['function']]))
+    }
+    likelihood_common(path, g2_likelihood, 'g3l_catchdistribution', function_f)
+}
+
 likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
     to_list_call <- function (strings) {
         as.call(lapply(c("list", strings), as.symbol))
