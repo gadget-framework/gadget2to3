@@ -35,7 +35,7 @@ likelihood_understocking <- function (path, g2_likelihood, g2_likelihoods) {
         stock_list = stock_list))
 }
 
-likelihood_catchdistribution <- function (path, g2_likelihood, ...) {
+likelihood_catchdistribution <- function (path, g2_likelihood, g2_likelihoods) {
     if (g2_likelihood[['function']] == 'sumofsquares') {
         function_f <- call("g3l_distribution_sumofsquares")
     } else if (g2_likelihood[['function']] == 'multinomial') {
@@ -43,7 +43,13 @@ likelihood_catchdistribution <- function (path, g2_likelihood, ...) {
     } else {
         stop("Unknown distribution type", )
     }
-    if (length(g2_likelihood$overconsumption) == 1 && g2_likelihood$overconsumption > 0) stop("Likelihood overconsumption=1 not supported")
+    if (length(g2_likelihood$overconsumption) == 1 && g2_likelihood$overconsumption > 0) {
+        if (any(vapply(g2_likelihoods, function (l) l$type == "understocking", logical(1)))) {
+            warning("Likelhood overconsumption=1, as well as a separate understocking component. This should be unnecessary, assuming overconsumption=0")
+        } else {
+            stop("Likelihood overconsumption=1 not supported")
+        }
+    }
     if (length(g2_likelihood$aggregationlevel) == 1 && g2_likelihood$aggregationlevel > 0) stop("Likelihood aggregationlevel=1 not supported")
     likelihood_common(path, g2_likelihood, 'g3l_catchdistribution', function_f)
 }
