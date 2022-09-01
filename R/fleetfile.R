@@ -35,7 +35,8 @@ fleet_totalfleet <- function (path, fleet_var, g2_fleet) {
        stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
        sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
        path = path,
-       data_file_name = g2_fleet$amount))
+       # NB: [[1]] to ignore any trailing whitespace affecting file reading
+       data_file_name = g2_fleet$amount[[1]]))
 }
 
 fleet_numberfleet <- function (path, fleet_var, g2_fleet) {
@@ -48,7 +49,8 @@ fleet_numberfleet <- function (path, fleet_var, g2_fleet) {
        stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
        sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
        path = path,
-       data_file_name = g2_fleet$amount))
+       # NB: [[1]] to ignore any trailing whitespace affecting file reading
+       data_file_name = g2_fleet$amount[[1]]))
 }
 
 fleet_linearfleet <- function (path, fleet_var, g2_fleet) {
@@ -61,5 +63,6 @@ fleet_linearfleet <- function (path, fleet_var, g2_fleet) {
        stock_vars = sutabilities_stock_vars(g2_fleet$suitability),
        sutabilities = sutabilities_fn_list(path, g2_fleet$suitability),
        path = path,
-       data_file_name = g2_fleet$amount))
+       # NB: [[1]] to ignore any trailing whitespace affecting file reading
+       data_file_name = g2_fleet$amount[[1]]))
 }
