@@ -51,7 +51,7 @@ likelihood_catchdistribution <- function (path, g2_likelihood, g2_likelihoods) {
         }
     }
     if (length(g2_likelihood$aggregationlevel) == 1 && g2_likelihood$aggregationlevel > 0) stop("Likelihood aggregationlevel=1 not supported")
-    likelihood_common(path, g2_likelihood, 'g3l_catchdistribution', function_f)
+    likelihood_common(path, g2_likelihood, function_f)
 }
 
 # Difference with stockdistribution is in the data, which we handle automatically
@@ -85,7 +85,7 @@ likelihood_surveyindices <- function (path, g2_likelihood, ...) {
     } else {
         function_f <- call("stop", paste0("Unknown surveyindices fit type ", g2_likelihood$fittype))
     }
-    likelihood_common(path, g2_likelihood, 'g3l_abundancedistribution', function_f)
+    likelihood_common(path, g2_likelihood, function_f)
 }
 
 likelihood_catchinkilos <- function (path, g2_likelihood, ...) {
@@ -94,10 +94,10 @@ likelihood_catchinkilos <- function (path, g2_likelihood, ...) {
     } else {
         function_f <- call("stop", paste0("Unknown surveyindices fit type ", g2_likelihood[['function']]))
     }
-    likelihood_common(path, g2_likelihood, 'g3l_catchdistribution', function_f)
+    likelihood_common(path, g2_likelihood, function_f)
 }
 
-likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
+likelihood_common <- function (path, g2_likelihood, function_f) {
     to_list_call <- function (strings) {
         as.call(lapply(c("list", strings), as.symbol))
     }
@@ -115,6 +115,7 @@ likelihood_common <- function (path, g2_likelihood, method_name, function_f) {
         obs_data_call[['final_colname']] <- 'number'
     }
 
+    method_name <- if (length(g2_likelihood$fleetnames) > 0) "g3l_catchdistribution" else "g3l_abundancedistribution"
     out <- call(method_name, g2_likelihood$name, obs_data_call)
     if (length(g2_likelihood$fleetnames) > 0) out['fleets'] <- list(to_list_call(g2_likelihood$fleetnames))
     out['stocks'] <- list(to_list_call(g2_likelihood$stocknames))
