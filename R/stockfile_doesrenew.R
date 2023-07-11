@@ -1,7 +1,7 @@
 stockfile_doesrenew <- function (path, stock_var, sect, g2_stock) {
-    if (sect$dl != g2_stock[[1]]$dl) stop("doesrenew dl should match stock's dl")
-    if (sect$minlength != g2_stock[[1]]$minlength) stop("doesrenew minlength should match stock's minlength")
-    if (sect$maxlength != g2_stock[[1]]$maxlength) stop("doesrenew maxlength should match stock's maxlength")
+    if (!is.null(sect$dl) && sect$dl != g2_stock[[1]]$dl) stop("doesrenew dl should match stock's dl")
+    if (!is.null(sect$minlength) && sect$minlength != g2_stock[[1]]$minlength) stop("doesrenew minlength should match stock's minlength")
+    if (!is.null(sect$maxlength) && sect$maxlength != g2_stock[[1]]$maxlength) stop("doesrenew maxlength should match stock's maxlength")
 
     if ('normalparamfile' %in% names(sect)) {
         stockfile_doesrenew_normalparam(path, stock_var, sect, g2_stock)

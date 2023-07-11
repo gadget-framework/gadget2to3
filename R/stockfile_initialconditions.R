@@ -1,9 +1,9 @@
 stockfile_initialconditions <- function (path, stock_var, sect, g2_stock) {
-    if (sect$dl != g2_stock[[1]]$dl) stop("Initialconditions dl should match stock's dl")
-    if (sect$minlength != g2_stock[[1]]$minlength) stop("Initialconditions minlength should match stock's minlength")
-    if (sect$maxlength != g2_stock[[1]]$maxlength) stop("Initialconditions maxlength should match stock's maxlength")
-    if (sect$minage != g2_stock[[1]]$minage) stop("Initialconditions minage should match stock's minage")
-    if (sect$maxage != g2_stock[[1]]$maxage) stop("Initialconditions maxage should match stock's maxage")
+    if (!is.null(sect$dl) && sect$dl != g2_stock[[1]]$dl) stop("Initialconditions dl should match stock's dl")
+    if (!is.null(sect$minlength) && sect$minlength != g2_stock[[1]]$minlength) stop("Initialconditions minlength should match stock's minlength")
+    if (!is.null(sect$maxlength) && sect$maxlength != g2_stock[[1]]$maxlength) stop("Initialconditions maxlength should match stock's maxlength")
+    if (!is.null(sect$minage) && sect$minage != g2_stock[[1]]$minage) stop("Initialconditions minage should match stock's minage")
+    if (!is.null(sect$maxage) && sect$maxage != g2_stock[[1]]$maxage) stop("Initialconditions maxage should match stock's maxage")
 
     if ('normalparamfile' %in% names(sect)) {
         stockfile_initialconditions_normalparam(path, stock_var, sect, g2_stock)
