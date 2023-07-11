@@ -106,7 +106,9 @@ stockfile_naturalmortality <- function (path, stock_var, sect, g2_stock) {
         # All the same, can just use the first
         nm_f <- g2to3_formula(path, nm[[1]])
     } else {
-        stop("Not sure how to handle naturalmortality = ", paste(nm))
+        ages <- seq(as.integer(g2_stock[[1]]$minage), as.integer(g2_stock[[1]]$maxage))
+        if (length(ages) != length(nm)) stop("Should be one naturalmortality value (currently ", length(nm), ") per age (currently ", length(ages), ")")
+        nm_f <- combine_formulas(as.list(nm), age = ages)
     }
     substitute(g3a_naturalmortality(stock_var, g3a_naturalmortality_exp(nm_f)), list(
         nm_f = nm_f,
