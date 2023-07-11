@@ -6,7 +6,7 @@ stockfile_doesrenew <- function (path, stock_var, sect, g2_stock) {
     if ('normalparamfile' %in% names(sect)) {
         stockfile_doesrenew_normalparam(path, stock_var, sect, g2_stock)
     } else {
-        stop('Unknown initial conditions type ', sect)
+        stop('Unknown doesrenew conditions type ', sect)
     }
 }
 
