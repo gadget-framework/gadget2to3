@@ -7,7 +7,7 @@ g2to3_script <- function(
         r_model = TRUE,
         tmb_model = TRUE) {
     if (!dir.exists(output_path)) dir.create(output_path, recursive = TRUE)
-    script_con <- file(paste0(output_path, '/', output_script), open = "at")
+    script_con <- file(paste0(output_path, '/', output_script), open = "wt")
     on.exit(close(script_con))
 
     writeDeparse <- function (code, line_sep = "\n") {
