@@ -2,12 +2,16 @@ g2to3_formula <- function (path, g2f) {
     if (is.character(g2f) && file.exists(file.path(path, g2f))) {
         tvfile <- Rgadget::read.gadget.file(path, g2f, file_type = 'timevariable', recursive = FALSE)
 
-        if (is.null(tvfile[[1]]$timedata)) {
+        if (!is.null(tvfile[[1]]$timedata)) {
+           data_col <- 'timedata'
+        } else if (!is.null(tvfile[[1]]$data)) {
+           data_col <- 'data'
+        } else {
           return(substitute( stop("No timedata in timevariable file", g2f), list(g2f = g2f)))
         }
 
-        fs <- lapply(tvfile[[1]]$timedata$value, function (x) g2to3_formula(path, x))
-        names(fs) <- paste0(tvfile[[1]]$timedata$year, '-', tvfile[[1]]$timedata$step)
+        fs <- lapply(tvfile[[1]][[data_col]]$value, function (x) g2to3_formula(path, x))
+        names(fs) <- paste0(tvfile[[1]][[data_col]]$year, '-', tvfile[[1]][[data_col]]$step)
         names(fs)[[1]] <- 'init'
 
         return(gadget3::g3_timevariable(names(tvfile[[1]])[[1]], fs))
