@@ -102,7 +102,7 @@ stockfile_doesmove <- function (path, stock_var, sect, g2_stock) {
 
 stockfile_naturalmortality <- function (path, stock_var, sect, g2_stock) {
     nm <- sect$naturalmortality
-    if (which(!duplicated(nm)) == 1) {
+    if (identical(which(!duplicated(nm)), c(1L))) {
         # All the same, can just use the first
         nm_f <- g2to3_formula(path, nm[[1]])
     } else {
