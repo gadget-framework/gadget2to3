@@ -59,21 +59,29 @@ likelihood_stockdistribution <- likelihood_catchdistribution
 
 likelihood_surveyindices <- function (path, g2_likelihood, ...) {
     if (g2_likelihood$fittype == 'linearfit') {
-        function_f <- call("g3l_distribution_surveyindices_linear")
+        function_f <- call("g3l_distribution_surveyindices_linear",
+            alpha = NULL,
+            beta = NULL)
     } else if (g2_likelihood$fittype == 'loglinearfit') {
-        function_f <- call("g3l_distribution_surveyindices_log")
+        function_f <- call("g3l_distribution_surveyindices_log",
+            alpha = NULL,
+            beta = NULL)
     } else if (g2_likelihood$fittype == 'fixedslopelinearfit') {
         function_f <- call("g3l_distribution_surveyindices_linear",
+            alpha = NULL,
             beta = g2_likelihood$slope)
     } else if (g2_likelihood$fittype == 'fixedslopeloglinearfit') {
         function_f <- call("g3l_distribution_surveyindices_log",
+            alpha = NULL,
             beta = g2_likelihood$slope)
     } else if (g2_likelihood$fittype == 'fixedinterceptlinearfit') {
         function_f <- call("g3l_distribution_surveyindices_linear",
-            alpha = g2_likelihood$intercept)
+            alpha = g2_likelihood$intercept,
+            beta = NULL)
     } else if (g2_likelihood$fittype == 'fixedinterceptloglinearfit') {
         function_f <- call("g3l_distribution_surveyindices_log",
-            alpha = g2_likelihood$intercept)
+            alpha = g2_likelihood$intercept,
+            beta = NULL)
     } else if (g2_likelihood$fittype == 'fixedlinearfit') {
         function_f <- call("g3l_distribution_surveyindices_linear",
             alpha = g2_likelihood$intercept,

@@ -86,7 +86,7 @@ ling_likelihood_actions <- list(
             length = Rgadget::read.gadget.file('inttest/understocking','Aggfiles/surveyindices.si.100-120.len.agg')[[1]]),
         fleets = list(),
         stocks = list(lingimm, lingmat),
-        g3l_distribution_surveyindices_log(),
+        g3l_distribution_surveyindices_log(alpha = NULL, beta = NULL),
         report = TRUE,
         nll_breakdown = TRUE),
     list())
